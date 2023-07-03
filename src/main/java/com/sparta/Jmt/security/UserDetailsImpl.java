@@ -1,4 +1,4 @@
 package com.sparta.Jmt.security;
 
-public class UserDetailsService {
+public class UserDetailsImpl {
 }
