@@ -37,11 +37,16 @@ public class Post extends TimeStamped {
     @Column(nullable = false)
     private String jmtMenu;
 
-    @Column(nullable = true)
+    @Column
     private URL jmtImage;
 
     @Column(nullable = false)
     private float jmtScore;
+
+    @ManyToOne
+    @Column
+    private User user;
+
 
     public Post(PostRequestDto requestDto) {
         this.postTitle = requestDto.getPostTitle();
@@ -63,5 +68,8 @@ public class Post extends TimeStamped {
         this.jmtMenu = requestDto.getJmtMenu();
         this.jmtImage = requestDto.getJmtImage();
         this.jmtScore = requestDto.getJmtScore();
+    }
+    public void setUser(User user){
+        this.user = user;
     }
 }
