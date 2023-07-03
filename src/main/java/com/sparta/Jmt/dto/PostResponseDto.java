@@ -33,4 +33,5 @@ public class PostResponseDto extends MsgResponseDto{
         this.createdAt = post.getCreatedAt();
         this.modifiedAt = post.getModifiedAt();
     }
+
 }
