@@ -8,11 +8,10 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
-public class TimeStamped {
     @Getter
     @MappedSuperclass
     @EntityListeners(AuditingEntityListener.class)
-    public abstract class TimeStamped {
+    public abstract class TimeStamped{
 
         @CreatedDate
         @Column(updatable = false)
@@ -24,5 +23,3 @@ public class TimeStamped {
         @Temporal(TemporalType.TIMESTAMP)
         private LocalDateTime modifiedAt;
     }
-
-}

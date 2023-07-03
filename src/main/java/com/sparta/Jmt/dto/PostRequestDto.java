@@ -1,6 +1,9 @@
 package com.sparta.Jmt.dto;
 
+import com.sparta.Jmt.entity.Post;
 import lombok.Getter;
+
+import java.net.URL;
 
 @Getter
 public class PostRequestDto {
@@ -10,17 +13,17 @@ public class PostRequestDto {
     private String jmtName;
     private String jmtLocation;
     private String jmtMenu;
-    private String jmtImage;
-    private String jmtScore;
+    private URL jmtImage;
+    private float jmtScore;
 
-    public PostRequestDto() {
-        this.postTitle = postTitle;
-        this.postContent = postContent;
-        this.postCategory = postCategory;
-        this.jmtName = jmtName;
-        this.jmtLocation = jmtLocation;
-        this.jmtMenu = jmtMenu;
-        this.jmtImage = jmtImage;
-        this.jmtScore = jmtScore;
+    public PostRequestDto(Post post) {
+        this.postTitle = getPostTitle();
+        this.postContent = getPostContent();
+        this.postCategory = getPostCategory();
+        this.jmtName = getJmtName();
+        this.jmtLocation = getJmtLocation();
+        this.jmtMenu = getJmtMenu();
+        this.jmtImage = getJmtImage();
+        this.jmtScore = getJmtScore();
     }
 }

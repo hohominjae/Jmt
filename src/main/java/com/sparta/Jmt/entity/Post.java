@@ -1,30 +1,19 @@
 package com.sparta.Jmt.entity;
 
-import java.net.URL;
-import java.util.List;
-
-import com.thesun4sky.springblog.dto.PostRequestDto;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import com.sparta.Jmt.dto.PostRequestDto;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.net.URL;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @Table(name = "jmt")
-public class Post extends com.thesun4sky.springblog.entity.TimeStamped {
+public class Post extends TimeStamped {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +26,7 @@ public class Post extends com.thesun4sky.springblog.entity.TimeStamped {
     private String postContent;
 
     @Column(nullable = false)
-    private int postCategory;
+    private String postCategory;
 
     @Column(nullable = false)
     private String jmtName;
@@ -49,29 +38,30 @@ public class Post extends com.thesun4sky.springblog.entity.TimeStamped {
     private String jmtMenu;
 
     @Column(nullable = true)
-    private URL jmtimage;
+    private URL jmtImage;
 
     @Column(nullable = false)
     private float jmtScore;
 
-
-
-
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
-
-//    @OneToMany(mappedBy = "jmt", cascade = CascadeType.REMOVE)
-//    private List<Comment> comments;
-
     public Post(PostRequestDto requestDto) {
-        this.postTitle = requestDto.getpostTitle();
-        this.postContent = requestDto.getpostContent();
-        this.postCategory = requestDto.getpostCategory();
-        this.jmtName = requestDto.getjmtName();
-        this.jmtLocation = requestDto.getjmtLocation();
-        this.jmtMenu = requestDto.getjmtMenu();
-        this.jmtimage = requestDto.getjmtimage();
-        this.jmtScore = requestDto.getjmtScore();
+        this.postTitle = requestDto.getPostTitle();
+        this.postContent = requestDto.getPostContent();
+        this.postCategory = requestDto.getPostCategory();
+        this.jmtName = requestDto.getJmtName();
+        this.jmtLocation = requestDto.getJmtLocation();
+        this.jmtMenu = requestDto.getJmtMenu();
+        this.jmtImage = requestDto.getJmtImage();
+        this.jmtScore = requestDto.getJmtScore();
+    }
+
+    public void updatePost(PostRequestDto requestDto){
+        this.postTitle = requestDto.getPostTitle();
+        this.postContent = requestDto.getPostContent();
+        this.postCategory = requestDto.getPostCategory();
+        this.jmtName = requestDto.getJmtName();
+        this.jmtLocation = requestDto.getJmtLocation();
+        this.jmtMenu = requestDto.getJmtMenu();
+        this.jmtImage = requestDto.getJmtImage();
+        this.jmtScore = requestDto.getJmtScore();
     }
 }
