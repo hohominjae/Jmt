@@ -11,5 +11,5 @@ public class UserRequestDto {
     private String userPassword;
     private String userName;
     private String profileComment;
-    private URL profileImage;
+//    private URL profileImage;
 }

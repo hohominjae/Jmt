@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.awt.image.BufferedImage;
 import java.net.URL;
 
 @Entity
@@ -30,6 +29,13 @@ public class User {
     @Column
     private String profileComment;
 
-    @Column
-    private URL profileImage;
+//    @Column
+//    private URL profileImage;
+
+    public User(String userId, String userPassword, String userName, String profileComment) {
+        this.userId = userId;
+        this.userPassword = userPassword;
+        this.userName = userName;
+        this.profileComment = profileComment;
+    }
 }
