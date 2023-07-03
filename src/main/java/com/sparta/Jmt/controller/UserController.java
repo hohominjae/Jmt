@@ -26,11 +26,7 @@ public class UserController {
 
     @PostMapping("/jmt/login")
     public MsgResponseDto login(@RequestBody UserRequestDto requestDto, HttpServletResponse res) {
-//        try {
-            userService.login(requestDto, res);
-//        } catch (Exception e) {
-//            e.getMessage();
-//        }
+        userService.login(requestDto, res);
         return new MsgResponseDto("로그인 성공", 200);
     }
 }

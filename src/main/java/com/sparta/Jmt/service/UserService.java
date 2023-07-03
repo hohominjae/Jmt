@@ -25,7 +25,7 @@ public class UserService {
         String password = passwordEncoder.encode(requestDto.getUserPassword());
         String userName = requestDto.getUserName();
         String profileComment = requestDto.getProfileComment();
-//        URL profileImage = requestDto.getProfileImage();
+        URL profileImage = requestDto.getProfileImage();
 
         // 회원 중복 확인
         Optional<User> checkUserId = userRepository.findByUserId(userId);
@@ -34,7 +34,7 @@ public class UserService {
         }
 
         // 사용자 등록
-        User user = new User(userId, password, userName, profileComment);
+        User user = new User(userId, password, userName, profileComment, profileImage);
         userRepository.save(user);
     }
 

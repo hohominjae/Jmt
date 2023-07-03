@@ -29,13 +29,14 @@ public class User {
     @Column
     private String profileComment;
 
-//    @Column
-//    private URL profileImage;
+    @Column
+    private URL profileImage;
 
-    public User(String userId, String userPassword, String userName, String profileComment) {
+    public User(String userId, String userPassword, String userName, String profileComment, URL profileImage) {
         this.userId = userId;
         this.userPassword = userPassword;
         this.userName = userName;
         this.profileComment = profileComment;
+        this.profileImage = profileImage;
     }
 }
