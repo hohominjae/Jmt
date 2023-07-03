@@ -4,6 +4,7 @@ import com.sparta.Jmt.dto.PostListResponseDto;
 import com.sparta.Jmt.dto.PostRequestDto;
 import com.sparta.Jmt.dto.PostResponseDto;
 import com.sparta.Jmt.entity.Post;
+import com.sparta.Jmt.entity.User;
 import com.sparta.Jmt.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,7 @@ public class PostService {
 
     public PostResponseDto createPost(PostRequestDto postRequestDto){
         Post post = new Post(postRequestDto);
+
         postRepository.save(post);
 
         PostResponseDto postResponseDto = new PostResponseDto(post);
