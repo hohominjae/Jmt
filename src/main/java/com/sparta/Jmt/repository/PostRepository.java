@@ -1,4 +1,8 @@
-package com.sparta.Jmt.repository;
+package com.thesun4sky.springblog.repository;
 
-public class PostRepository {
+import com.thesun4sky.springblog.entity.Post;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PostRepository extends JpaRepository<Post, Long> {
+
 }
