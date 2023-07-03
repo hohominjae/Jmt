@@ -12,7 +12,7 @@ import java.net.URL;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "jmt")
+@Table(name = "posts")
 public class Post extends TimeStamped {
 
     @Id
@@ -37,21 +37,21 @@ public class Post extends TimeStamped {
     @Column(nullable = false)
     private String jmtMenu;
 
-    @Column(nullable = true)
+    @Column
     private URL jmtImage;
 
     @Column(nullable = false)
     private float jmtScore;
 
-    public Post(PostRequestDto requestDto) {
-        this.postTitle = requestDto.getPostTitle();
-        this.postContent = requestDto.getPostContent();
-        this.postCategory = requestDto.getPostCategory();
-        this.jmtName = requestDto.getJmtName();
-        this.jmtLocation = requestDto.getJmtLocation();
-        this.jmtMenu = requestDto.getJmtMenu();
-        this.jmtImage = requestDto.getJmtImage();
-        this.jmtScore = requestDto.getJmtScore();
+    public Post(PostRequestDto postRequestDto) {
+        this.postTitle = postRequestDto.getPostTitle();
+        this.postContent = postRequestDto.getPostContent();
+        this.postCategory = postRequestDto.getPostCategory();
+        this.jmtName = postRequestDto.getJmtName();
+        this.jmtLocation = postRequestDto.getJmtLocation();
+        this.jmtMenu = postRequestDto.getJmtMenu();
+        this.jmtImage = postRequestDto.getJmtImage();
+        this.jmtScore = postRequestDto.getJmtScore();
     }
 
     public void updatePost(PostRequestDto requestDto){
