@@ -1,5 +1,4 @@
 package com.sparta.Jmt.repository;
 
-public interface PostRepository {
+public class PostRepository {
 }
-
