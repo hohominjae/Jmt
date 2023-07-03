@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/jmt")
 public class UserController {
     private final UserService userService;
     private final JwtUtil jwtUtil;
@@ -23,13 +23,13 @@ public class UserController {
         this.jwtUtil = jwtUtil;
     }
 
-    @PostMapping("/jmt/sign-up")
+    @PostMapping("/sign-up")
     public ResponseEntity<MsgResponseDto> signup(@RequestBody UserRequestDto requestDto) {
         userService.signup(requestDto);
         return ResponseEntity.status(201).body(new MsgResponseDto("회원가입 성공", HttpStatus.CREATED.value()));
     }
 
-    @PostMapping("/jmt/login")
+    @PostMapping("/login")
     public ResponseEntity<MsgResponseDto> login(@RequestBody UserRequestDto requestDto, HttpServletResponse res) {
         userService.login(requestDto, res);
         // JWT 생성 및 쿠키에 저장 후 Response 객체에 추가
