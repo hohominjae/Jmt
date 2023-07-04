@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.net.URL;
-//병합용 주석
 @Entity
 @Getter
 @Setter
@@ -43,6 +42,10 @@ public class Post extends TimeStamped {
 
     @Column(nullable = false)
     private float jmtScore;
+
+    @Column
+    @ManyToOne
+    private User user;
 
     public Post(PostRequestDto postRequestDto) {
         this.postTitle = postRequestDto.getPostTitle();
