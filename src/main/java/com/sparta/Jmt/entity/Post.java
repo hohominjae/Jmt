@@ -26,7 +26,8 @@ public class Post extends TimeStamped {
     private String postContent;
 
     @Column(nullable = false)
-    private String postCategory;
+    @Enumerated(EnumType.STRING)
+    private PostCategory postCategory;
 
     @Column(nullable = false)
     private String jmtName;

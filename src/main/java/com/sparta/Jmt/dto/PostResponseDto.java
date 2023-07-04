@@ -2,6 +2,7 @@ package com.sparta.Jmt.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.sparta.Jmt.entity.Post;
+import com.sparta.Jmt.entity.PostCategory;
 import lombok.Getter;
 
 import java.net.URL;
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 public class PostResponseDto {
     private String postTitle;
     private String postContent;
-    private String postCategory;
+    private PostCategory postCategory;
     private String jmtName;
     private String jmtLocation;
     private String jmtMenu;
