@@ -64,4 +64,5 @@ public class Post extends TimeStamped {
         this.jmtImage = requestDto.getJmtImage();
         this.jmtScore = requestDto.getJmtScore();
     }
+
 }
