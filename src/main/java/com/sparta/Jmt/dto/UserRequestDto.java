@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.net.URL;
+
 @Setter
 @Getter
 public class UserRequestDto {

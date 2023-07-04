@@ -6,12 +6,10 @@ import com.sparta.Jmt.dto.PostResponseDto;
 import com.sparta.Jmt.entity.Post;
 import com.sparta.Jmt.entity.User;
 import com.sparta.Jmt.repository.PostRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.stream.Collectors;
 
 @Service
 public class PostService {
@@ -22,58 +20,55 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public PostResponseDto createPost(PostRequestDto postRequestDto, User user){
+    public PostResponseDto createPost(PostRequestDto postRequestDto){
+
         // RequestDto -> Entity(게시글 생성)
         Post post = new Post(postRequestDto);
-        post.setUser(user);
+
         // DB 저장
         postRepository.save(post);
-        return new PostResponseDto(post);
+
+        PostResponseDto postResponseDto = new PostResponseDto(post);
+        return postResponseDto;
     }
 
     //전체 게시물 보기
     public PostListResponseDto getPosts() {
-        List<PostResponseDto> postList = postRepository.findAll().stream().map(PostResponseDto::new).collect(Collectors.toList());
-        return new PostListResponseDto(postList);
+        PostListResponseDto postListResponseDto = new PostListResponseDto(postRepository.findAllByOrderByModifiedAtDesc().stream().map(PostResponseDto::new).toList());
+
+        return postListResponseDto;
     }
 
     //선택한 게시물 보기
-    public PostResponseDto getPostById(Long postId) {
+    public PostResponseDto getPost(Long postId) {
         //Post형태로 postId에 맞는 게시글 찾기
-        Post post = findPost(postId);
+        Post post = findById(postId);
 
-        //Post 형태의 찾은 게시물을 ResponseDto로 받아오기
-        return new PostResponseDto(post);
+        //Post 형태의 찾은 게시물을 ResponseDto로 바꿔주기
+        PostResponseDto postResponseDto = new PostResponseDto(post);
+        return postResponseDto;
     }
 
-    @Transactional
-    public PostResponseDto updatePost(Long postId,PostRequestDto requestDto, User user){
-        // 해당 포스트가 DB에 존재하는지 확인
-        Post post = findPost(postId);
-        //게시글 작성자(post.user)와 요청자(user)가 같은지 학인
-        if(!post.getUser().equals(user)) {
-            throw new RejectedExecutionException();
-        }
-        // post 내용 수정
-        post.setPostTitle(requestDto.getPostTitle());
-        post.setPostContent(requestDto.getPostContent());
+    public void updatePost(Long postId,PostRequestDto requestDto){
+        //Post형태로 postId에 맞는 게시글 찾기
+        Post post = findById(postId);
 
-        return new PostResponseDto(post);
+        //불러온 게시물을 수정
+        post.updatePost(requestDto);
     }
-    public void deletePost(Long postId, User user){
-        // 해당 포스트가 DB에 존재하는지 확인
-        Post post = findPost(postId);
-        //게시글 작성자(post.user)와 요청자(user)가 같은지 학인
-        if(!post.getUser().equals(user)) {
-            throw new RejectedExecutionException();
-        }
-        // post 삭제
+
+    public void deletePost(Long postId){
+        //Post형태로 postId에 맞는 게시글 찾기
+        Post post = findById(postId);
+
+        //불러온 게시물을 삭제
         postRepository.delete(post);
     }
 
-    private Post findPost(Long postId) {
+    public Post findById(Long postId){
         return postRepository.findById(postId).orElseThrow(() ->
                 new IllegalArgumentException("선택한 게시글이 존재하지 않습니다."));
     }
+
 
 }
