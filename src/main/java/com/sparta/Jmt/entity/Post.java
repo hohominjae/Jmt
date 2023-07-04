@@ -14,7 +14,7 @@ import java.net.URL;
 @NoArgsConstructor
 @Table(name = "posts")
 public class Post extends TimeStamped {
-
+    //1
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
