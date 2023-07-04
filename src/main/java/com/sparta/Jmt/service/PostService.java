@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.stream.Collectors;
+//병합해주세용
 
 @Service
 public class PostService {
