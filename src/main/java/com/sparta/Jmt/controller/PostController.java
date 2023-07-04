@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.RejectedExecutionException;
 
+//병합용 주석
 @RestController
 @RequestMapping("/api/jmt")
 public class PostController {
