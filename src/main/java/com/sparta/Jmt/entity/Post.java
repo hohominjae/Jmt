@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.net.URL;
-
+//병합용 주석
 @Entity
 @Getter
 @Setter
