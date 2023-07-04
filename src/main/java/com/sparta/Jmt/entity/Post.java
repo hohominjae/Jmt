@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.net.URL;
+
 @Entity
 @Getter
 @Setter
@@ -37,7 +38,7 @@ public class Post extends TimeStamped {
     @Column(nullable = false)
     private String jmtMenu;
 
-    @Column
+    @Column(nullable = true)
     private URL jmtImage;
 
     @Column(nullable = false)
