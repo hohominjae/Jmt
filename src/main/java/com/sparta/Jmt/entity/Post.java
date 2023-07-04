@@ -43,7 +43,6 @@ public class Post extends TimeStamped {
     @Column(nullable = false)
     private float jmtScore;
 
-    @Column
     @ManyToOne
     private User user;
 
