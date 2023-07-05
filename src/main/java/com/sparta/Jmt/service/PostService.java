@@ -4,6 +4,7 @@ import com.sparta.Jmt.dto.PostListResponseDto;
 import com.sparta.Jmt.dto.PostRequestDto;
 import com.sparta.Jmt.dto.PostResponseDto;
 import com.sparta.Jmt.entity.Post;
+import com.sparta.Jmt.entity.User;
 import com.sparta.Jmt.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public PostResponseDto createPost(PostRequestDto postRequestDto){
+    public PostResponseDto createPost(PostRequestDto postRequestDto,User user){
         Post post = new Post(postRequestDto);
         postRepository.save(post);
 
@@ -44,7 +45,7 @@ public class PostService {
         return postResponseDto;
     }
 
-    public void updatePost(Long postId,PostRequestDto requestDto){
+    public void updatePost(Long postId, PostRequestDto requestDto, User user){
         //Post형태로 postId에 맞는 게시글 찾기
         Post post = findById(postId);
 
@@ -52,7 +53,7 @@ public class PostService {
         post.updatePost(requestDto);
     }
 
-    public void deletePost(Long postId){
+    public void deletePost(Long postId,User user){
         //Post형태로 postId에 맞는 게시글 찾기
         Post post = findById(postId);
 
