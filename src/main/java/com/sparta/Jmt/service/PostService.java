@@ -23,7 +23,7 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public PostResponseDto createPost(PostRequestDto postRequestDto, User user){
+    public PostResponseDto createPost(PostRequestDto postRequestDto, User user) {
         // RequestDto -> Entity(게시글 생성)
         Post post = new Post(postRequestDto);
         post.setUser(user);
@@ -34,7 +34,8 @@ public class PostService {
 
     //전체 게시물 보기
     public PostListResponseDto getPosts() {
-        List<PostResponseDto> postList = postRepository.findAll().stream().map(PostResponseDto::new).collect(Collectors.toList());
+        List<PostResponseDto> postList = postRepository.findAllByOrderByModifiedAtDesc()
+                .stream().map(PostResponseDto::new).collect(Collectors.toList());
         return new PostListResponseDto(postList);
     }
 
@@ -48,24 +49,31 @@ public class PostService {
     }
 
     @Transactional
-    public PostResponseDto updatePost(Long postId,PostRequestDto requestDto, User user){
+    public PostResponseDto updatePost(Long postId, PostRequestDto requestDto, User user) {
         // 해당 포스트가 DB에 존재하는지 확인
         Post post = findPost(postId);
         //게시글 작성자(post.user)와 요청자(user)가 같은지 학인
-        if(!post.getUser().equals(user)) {
+        if (!post.getUser().equals(user)) {
             throw new RejectedExecutionException();
         }
         // post 내용 수정
         post.setPostTitle(requestDto.getPostTitle());
         post.setPostContent(requestDto.getPostContent());
+        post.setPostCategory(requestDto.getPostCategory());
+        post.setJmtName(requestDto.getJmtName());
+        post.setJmtLocation(requestDto.getJmtLocation());
+        post.setJmtMenu(requestDto.getJmtMenu());
+        post.setJmtImage(requestDto.getJmtImage());
+        post.setJmtScore(requestDto.getJmtScore());
 
         return new PostResponseDto(post);
     }
-    public void deletePost(Long postId, User user){
+
+    public void deletePost(Long postId, User user) {
         // 해당 포스트가 DB에 존재하는지 확인
         Post post = findPost(postId);
         //게시글 작성자(post.user)와 요청자(user)가 같은지 학인
-        if(!post.getUser().equals(user)) {
+        if (!post.getUser().equals(user)) {
             throw new RejectedExecutionException();
         }
         // post 삭제
