@@ -27,9 +27,9 @@ public class PostController {
 
     //게시물 작성
     @PostMapping("/post")
-    public ResponseEntity<PostResponseDto> createPost(@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestBody PostRequestDto requestDto) {
-        PostResponseDto result = postService.createPost(requestDto, userDetails.getUser());
-        return ResponseEntity.status(201).body(result);
+    public ResponseEntity<MsgResponseDto> createPost(@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestBody PostRequestDto requestDto) {
+        postService.createPost(requestDto, userDetails.getUser());
+        return ResponseEntity.ok().body(new MsgResponseDto("게시글 생성 성공", HttpStatus.OK.value()));
     }
 
     @GetMapping("/posts")//글 전체 조회
@@ -45,10 +45,10 @@ public class PostController {
     }
 
     @PutMapping("/post/{postId}")
-    public ResponseEntity<PostResponseDto> updatePost(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable Long postId, @RequestBody PostRequestDto requestDto) {
+    public ResponseEntity<MsgResponseDto> updatePost(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable Long postId, @RequestBody PostRequestDto requestDto) {
         try {
-            PostResponseDto result = postService.updatePost(postId, requestDto, userDetails.getUser());
-            return ResponseEntity.ok().body(result);
+            postService.updatePost(postId, requestDto, userDetails.getUser());
+            return ResponseEntity.ok().body(new MsgResponseDto("게시글 수정 성공", HttpStatus.OK.value()));
         } catch (RejectedExecutionException e) {
             return ResponseEntity.badRequest().build();
         }
