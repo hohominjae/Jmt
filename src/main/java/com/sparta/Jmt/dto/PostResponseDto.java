@@ -1,7 +1,10 @@
 package com.sparta.Jmt.dto;
 
 import com.sparta.Jmt.entity.Post;
+import com.sparta.Jmt.entity.PostCategory;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.net.URL;
@@ -10,7 +13,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 public class PostResponseDto {
-    private Long id;
+    private String userName;
 
     @NotBlank(message = "글의 제목을 입력해주세요.")
     private String postTitle;

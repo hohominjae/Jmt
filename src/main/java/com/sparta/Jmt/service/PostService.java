@@ -4,11 +4,15 @@ import com.sparta.Jmt.dto.PostListResponseDto;
 import com.sparta.Jmt.dto.PostRequestDto;
 import com.sparta.Jmt.dto.PostResponseDto;
 import com.sparta.Jmt.entity.Post;
+import com.sparta.Jmt.entity.User;
 import com.sparta.Jmt.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.stream.Collectors;
 
 @Service
 public class PostService {
@@ -58,11 +62,10 @@ public class PostService {
         post.setPostTitle(requestDto.getPostTitle());
         post.setPostContent(requestDto.getPostContent());
         post.setPostCategory(requestDto.getPostCategory());
-        post.setJmtName(requestDto.getJmtName());
-        post.setJmtLocation(requestDto.getJmtLocation());
-        post.setJmtMenu(requestDto.getJmtMenu());
-        post.setJmtImage(requestDto.getJmtImage());
-        post.setJmtScore(requestDto.getJmtScore());
+        post.setStoreName(requestDto.getStoreName());
+        post.setStoreLocation(requestDto.getStoreLocation());
+        post.setJmtMenuName(requestDto.getJmtMenuName());
+        post.setJmtMenuImageUrl(requestDto.getJmtMenuImageUrl());
 
         return new PostResponseDto(post);
     }
