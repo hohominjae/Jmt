@@ -3789,7 +3789,7 @@ body.search-is-visible .s-header__search-inner {
 /* HERO */
 
 .hero {
-    --entry-title-size : 6rem;
+    --entry-title-size : 5.5rem;
     --text-multiplier  : 1;
     background-color   : var(--color-body);
     width              : 100%;

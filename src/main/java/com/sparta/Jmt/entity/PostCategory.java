@@ -1,11 +1,12 @@
 package com.sparta.Jmt.entity;
 
 public enum PostCategory {
-    KoreanFood,
-    ChineseFood,
-    JapaneseFood,
-    WesternFood,
-    ItalianFood,
-    MexicanFood,
-    EtcFood
+    KOREANFOOD,
+    CHINESEFOOD,
+    JAPANESEFOOD,
+    WESTERNFOOD,
+    FRENCHFOOD,
+    ITALIANFOOD,
+    MEXICANFOOD,
+    ETCFOOD
 }

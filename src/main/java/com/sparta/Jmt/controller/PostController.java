@@ -4,11 +4,14 @@ import com.sparta.Jmt.dto.MsgResponseDto;
 import com.sparta.Jmt.dto.PostListResponseDto;
 import com.sparta.Jmt.dto.PostRequestDto;
 import com.sparta.Jmt.dto.PostResponseDto;
+import com.sparta.Jmt.entity.Post;
+import com.sparta.Jmt.entity.PostCategory;
 import com.sparta.Jmt.security.UserDetailsImpl;
 import com.sparta.Jmt.service.PostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.RejectedExecutionException;
@@ -21,6 +24,7 @@ public class PostController {
     //의존성 주입 받기위해 Service를 빈으로 등록 후 받아온다.
     //우리가 사용한 방법 생성자 주입
     private final PostService postService;
+
     public PostController(PostService postService){
         this.postService = postService;
     }
@@ -38,11 +42,10 @@ public class PostController {
         return ResponseEntity.ok().body(result);
     }
 
-    @GetMapping("/post/{postId}")//글 단건 조회
-    public ResponseEntity<PostResponseDto> getPostById(@PathVariable Long postId){
-        PostResponseDto result = postService.getPostById(postId);
-        return ResponseEntity.ok().body(result);
-    }
+//    @GetMapping("/post/{postId}")//글 단건 조회
+//    public String getPostOne(Model model){
+//
+//    }
 
     @PutMapping("/post/{postId}")
     public ResponseEntity<PostResponseDto> updatePost(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable Long postId, @RequestBody PostRequestDto requestDto){

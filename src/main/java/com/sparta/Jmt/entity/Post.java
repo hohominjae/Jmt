@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.net.URL;
-
 @Entity
 @Getter
 @Setter
@@ -30,19 +28,17 @@ public class Post extends TimeStamped {
     private PostCategory postCategory;
 
     @Column(nullable = false)
-    private String jmtName;
+    private String storeName;
 
     @Column(nullable = false)
-    private String jmtLocation;
+    private String storeLocation;
 
     @Column(nullable = false)
-    private String jmtMenu;
-
-    @Column(nullable = true)
-    private URL jmtImage;
+    private float storeScore;
 
     @Column(nullable = false)
-    private float jmtScore;
+    private String jmtMenuImageUrl;
+
 
     @ManyToOne
     private User user;
@@ -52,20 +48,10 @@ public class Post extends TimeStamped {
         this.postTitle = postRequestDto.getPostTitle();
         this.postContent = postRequestDto.getPostContent();
         this.postCategory = postRequestDto.getPostCategory();
-        this.jmtName = postRequestDto.getJmtName();
-        this.jmtLocation = postRequestDto.getJmtLocation();
-        this.jmtMenu = postRequestDto.getJmtMenu();
-        this.jmtScore = postRequestDto.getJmtScore();
-    }
-
-    public void updatePost(PostRequestDto requestDto){
-        this.postTitle = requestDto.getPostTitle();
-        this.postContent = requestDto.getPostContent();
-        this.postCategory = requestDto.getPostCategory();
-        this.jmtName = requestDto.getJmtName();
-        this.jmtLocation = requestDto.getJmtLocation();
-        this.jmtMenu = requestDto.getJmtMenu();
-        this.jmtScore = requestDto.getJmtScore();
+        this.storeName = postRequestDto.getStoreName();
+        this.storeLocation = postRequestDto.getStoreLocation();
+        this.storeScore = postRequestDto.getStoreScore();
+        this.jmtMenuImageUrl = postRequestDto.getJmtMenuImageUrl();
     }
 
 }
