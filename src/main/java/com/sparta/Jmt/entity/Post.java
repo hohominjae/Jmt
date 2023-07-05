@@ -49,14 +49,25 @@ public class Post extends TimeStamped {
     private User user;
 
 
-    public Post(PostRequestDto postRequestDto) {
-        this.postTitle = postRequestDto.getPostTitle();
-        this.postContent = postRequestDto.getPostContent();
-        this.postCategory = postRequestDto.getPostCategory();
-        this.storeName = postRequestDto.getStoreName();
-        this.storeLocation = postRequestDto.getStoreLocation();
-        this.storeScore = postRequestDto.getStoreScore();
-        this.jmtMenuName = postRequestDto.getJmtMenuName();
-        this.jmtMenuImageUrl = postRequestDto.getJmtMenuImageUrl();
+    public Post(PostRequestDto requestDto) {
+        this.postTitle = requestDto.getPostTitle();
+        this.postContent = requestDto.getPostContent();
+        this.postCategory = requestDto.getPostCategory();
+        this.storeName = requestDto.getStoreName();
+        this.storeLocation = requestDto.getStoreLocation();
+        this.storeScore = requestDto.getStoreScore();
+        this.jmtMenuName = requestDto.getJmtMenuName();
+        this.jmtMenuImageUrl = requestDto.getJmtMenuImageUrl();
+    }
+
+    public void updata(PostRequestDto requestDto) {
+        this.postTitle = requestDto.getPostTitle();
+        this.postContent = requestDto.getPostContent();
+        this.postCategory = requestDto.getPostCategory();
+        this.storeName = requestDto.getStoreName();
+        this.storeLocation = requestDto.getStoreLocation();
+        this.storeScore = requestDto.getStoreScore();
+        this.jmtMenuName = requestDto.getJmtMenuName();
+        this.jmtMenuImageUrl = requestDto.getJmtMenuImageUrl();
     }
 }

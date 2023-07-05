@@ -59,13 +59,7 @@ public class PostService {
             throw new RejectedExecutionException();
         }
         // post 내용 수정
-        post.setPostTitle(requestDto.getPostTitle());
-        post.setPostContent(requestDto.getPostContent());
-        post.setPostCategory(requestDto.getPostCategory());
-        post.setStoreName(requestDto.getStoreName());
-        post.setStoreLocation(requestDto.getStoreLocation());
-        post.setJmtMenuName(requestDto.getJmtMenuName());
-        post.setJmtMenuImageUrl(requestDto.getJmtMenuImageUrl());
+        post.updata(requestDto);
 
         return new PostResponseDto(post);
     }
