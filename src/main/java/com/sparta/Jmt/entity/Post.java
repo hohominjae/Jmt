@@ -60,7 +60,7 @@ public class Post extends TimeStamped {
         this.jmtMenuImageUrl = requestDto.getJmtMenuImageUrl();
     }
 
-    public void updata(PostRequestDto requestDto) {
+    public void update(PostRequestDto requestDto) {
         this.postTitle = requestDto.getPostTitle();
         this.postContent = requestDto.getPostContent();
         this.postCategory = requestDto.getPostCategory();
