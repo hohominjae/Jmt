@@ -1,6 +1,7 @@
 package com.sparta.Jmt.entity;
 
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,19 +13,20 @@ import java.net.URL;
 @Setter
 @NoArgsConstructor
 @Table(name = "users")
+@EqualsAndHashCode
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, unique = true)
-    private String userId;
+    private String userName;
 
     @Column(nullable = false)
     private String userPassword;
 
     @Column(nullable = false)
-    private String userName;
+    private String userNick;
 
     @Column
     private String profileComment;
@@ -32,10 +34,10 @@ public class User {
     @Column
     private URL profileImage;
 
-    public User(String userId, String userPassword, String userName, String profileComment, URL profileImage) {
-        this.userId = userId;
-        this.userPassword = userPassword;
+    public User(String userName, String userPassword, String userNick, String profileComment, URL profileImage) {
         this.userName = userName;
+        this.userPassword = userPassword;
+        this.userNick = userNick;
         this.profileComment = profileComment;
         this.profileImage = profileImage;
     }

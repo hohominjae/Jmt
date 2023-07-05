@@ -1,18 +1,19 @@
 package com.sparta.Jmt.dto;
 
 import com.sparta.Jmt.entity.Post;
+import com.sparta.Jmt.entity.PostCategory;
+import com.sparta.Jmt.entity.User;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.net.URL;
 import java.time.LocalDateTime;
 
 @Getter
-@Setter
-public class PostResponseDto extends MsgResponseDto{
+public class PostResponseDto {
+    private String userName;
     private String postTitle;
     private String postContent;
-    private String postCategory;
+    private PostCategory postCategory;
     private String jmtName;
     private String jmtLocation;
     private String jmtMenu;
@@ -22,14 +23,15 @@ public class PostResponseDto extends MsgResponseDto{
     private LocalDateTime modifiedAt;
 
     public PostResponseDto(Post post) {
-        this.postTitle = getPostTitle();
-        this.postContent = getPostContent();
-        this.postCategory = getPostCategory();
-        this.jmtName = getJmtName();
-        this.jmtLocation = getJmtLocation();
-        this.jmtMenu = getJmtMenu();
-        this.jmtImage = getJmtImage();
-        this.jmtScore = getJmtScore();
+        this.userName = post.getUser().getUserName();
+        this.postTitle = post.getPostTitle();
+        this.postContent = post.getPostContent();
+        this.postCategory = post.getPostCategory();
+        this.jmtName = post.getJmtName();
+        this.jmtLocation = post.getJmtLocation();
+        this.jmtMenu = post.getJmtMenu();
+        this.jmtImage = post.getJmtImage();
+        this.jmtScore = post.getJmtScore();
         this.createdAt = post.getCreatedAt();
         this.modifiedAt = post.getModifiedAt();
     }

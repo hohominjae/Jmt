@@ -29,26 +29,26 @@ public class PostController {
     @PostMapping("/post")
     public ResponseEntity<PostResponseDto> createPost(@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestBody PostRequestDto requestDto) {
         PostResponseDto result = postService.createPost(requestDto, userDetails.getUser());
-        return ResponseEntity.ok().body(result);
+        return ResponseEntity.status(201).body(result);
     }
 
-    @GetMapping("/posts")
+    @GetMapping("/posts")//글 전체 조회
     public ResponseEntity<PostListResponseDto> getPosts() {
         PostListResponseDto result = postService.getPosts();
         return ResponseEntity.ok().body(result);
     }
 
-    @GetMapping("/post/{postId}")
+    @GetMapping("/post/{postId}")//글 단건 조회
     public ResponseEntity<PostResponseDto> getPostById(@PathVariable Long postId) {
-        PostResponseDto result = postService.getPost(postId);
+        PostResponseDto result = postService.getPostById(postId);
         return ResponseEntity.ok().body(result);
     }
 
     @PutMapping("/post/{postId}")
-    public ResponseEntity<MsgResponseDto> updatePost(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable Long postId, @RequestBody PostRequestDto requestDto) {
+    public ResponseEntity<PostResponseDto> updatePost(@AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable Long postId, @RequestBody PostRequestDto requestDto) {
         try {
-            postService.updatePost(postId, requestDto, userDetails.getUser());
-            return ResponseEntity.ok().body(new MsgResponseDto("게시물 수정 완료", HttpStatus.OK.value()));
+            PostResponseDto result = postService.updatePost(postId, requestDto, userDetails.getUser());
+            return ResponseEntity.ok().body(result);
         } catch (RejectedExecutionException e) {
             return ResponseEntity.badRequest().build();
         }
@@ -63,4 +63,5 @@ public class PostController {
             return ResponseEntity.badRequest().build();
         }
     }
+
 }
