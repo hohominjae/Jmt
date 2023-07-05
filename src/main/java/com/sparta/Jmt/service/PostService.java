@@ -59,7 +59,7 @@ public class PostService {
             throw new RejectedExecutionException();
         }
         // post 내용 수정
-        post.updata(requestDto);
+        post.update(requestDto);
 
         return new PostResponseDto(post);
     }
