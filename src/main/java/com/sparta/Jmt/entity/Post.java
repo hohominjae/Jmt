@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.net.URL;
+
 @Entity
 @Getter
 @Setter
@@ -43,6 +44,7 @@ public class Post extends TimeStamped {
     @Column(nullable = false)
     private float jmtScore;
 
+    @JoinColumn
     @ManyToOne
     private User user;
 
@@ -55,16 +57,5 @@ public class Post extends TimeStamped {
         this.jmtMenu = postRequestDto.getJmtMenu();
         this.jmtImage = postRequestDto.getJmtImage();
         this.jmtScore = postRequestDto.getJmtScore();
-    }
-
-    public void updatePost(PostRequestDto requestDto){
-        this.postTitle = requestDto.getPostTitle();
-        this.postContent = requestDto.getPostContent();
-        this.postCategory = requestDto.getPostCategory();
-        this.jmtName = requestDto.getJmtName();
-        this.jmtLocation = requestDto.getJmtLocation();
-        this.jmtMenu = requestDto.getJmtMenu();
-        this.jmtImage = requestDto.getJmtImage();
-        this.jmtScore = requestDto.getJmtScore();
     }
 }
