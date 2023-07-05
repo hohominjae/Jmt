@@ -28,12 +28,4 @@ public class UserController {
         userService.signup(requestDto);
         return ResponseEntity.status(201).body(new MsgResponseDto("회원가입 성공", HttpStatus.CREATED.value()));
     }
-
-    @PostMapping("/login")
-    public ResponseEntity<MsgResponseDto> login(@RequestBody UserRequestDto requestDto, HttpServletResponse res) {
-        userService.login(requestDto, res);
-        // JWT 생성 및 쿠키에 저장 후 Response 객체에 추가
-        res.addHeader(JwtUtil.AUTHORIZATION_HEADER, jwtUtil.createToken(requestDto.getUserName()));
-        return ResponseEntity.ok().body(new MsgResponseDto("로그인 성공", HttpStatus.OK.value()));
-    }
 }

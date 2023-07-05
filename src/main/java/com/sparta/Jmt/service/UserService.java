@@ -37,23 +37,4 @@ public class UserService {
         User user = new User(userName, password, userNick, profileComment, profileImage);
         userRepository.save(user);
     }
-
-    public void login(UserRequestDto requestDto, HttpServletResponse res) {
-        String userId = requestDto.getUserName();
-        String password = requestDto.getUserPassword();
-
-        // 사용자 확인
-        User user = userRepository.findByUserName(userId).orElseThrow(
-                () -> new IllegalArgumentException("등록된 사용자가 없습니다.")
-        );
-
-        // 비밀번호 확인
-        if (!passwordEncoder.matches(password, user.getUserPassword())) {
-            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
-        }
-
-        // JWT 생성 및 쿠키에 저장 후 Response 객체에 추가
-        String token = jwtUtil.createToken(user.getUserName());
-        jwtUtil.addJwtToCookie(token, res);
-    }
 }
