@@ -1,16 +1,16 @@
 package com.sparta.Jmt.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.sparta.Jmt.entity.Post;
 import com.sparta.Jmt.entity.PostCategory;
+import com.sparta.Jmt.entity.User;
 import lombok.Getter;
 
 import java.net.URL;
 import java.time.LocalDateTime;
 
 @Getter
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PostResponseDto {
+    private String userName;
     private String postTitle;
     private String postContent;
     private PostCategory postCategory;
@@ -23,6 +23,7 @@ public class PostResponseDto {
     private LocalDateTime modifiedAt;
 
     public PostResponseDto(Post post) {
+        this.userName = post.getUser().getUserName();
         this.postTitle = post.getPostTitle();
         this.postContent = post.getPostContent();
         this.postCategory = post.getPostCategory();
