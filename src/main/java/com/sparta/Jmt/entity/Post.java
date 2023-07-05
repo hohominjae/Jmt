@@ -30,32 +30,33 @@ public class Post extends TimeStamped {
     private PostCategory postCategory;
 
     @Column(nullable = false)
-    private String jmtName;
+    private String storeName;
 
     @Column(nullable = false)
-    private String jmtLocation;
+    private String storeLocation;
 
     @Column(nullable = false)
-    private String jmtMenu;
-
-    @Column
-    private URL jmtImage;
+    private float storeScore;
 
     @Column(nullable = false)
-    private float jmtScore;
+    private String jmtMenuName;
+
+    @Column(nullable = false)
+    private URL jmtMenuImageUrl;
 
     @JoinColumn
     @ManyToOne
     private User user;
 
+
     public Post(PostRequestDto postRequestDto) {
         this.postTitle = postRequestDto.getPostTitle();
         this.postContent = postRequestDto.getPostContent();
         this.postCategory = postRequestDto.getPostCategory();
-        this.jmtName = postRequestDto.getJmtName();
-        this.jmtLocation = postRequestDto.getJmtLocation();
-        this.jmtMenu = postRequestDto.getJmtMenu();
-        this.jmtImage = postRequestDto.getJmtImage();
-        this.jmtScore = postRequestDto.getJmtScore();
+        this.storeName = postRequestDto.getStoreName();
+        this.storeLocation = postRequestDto.getStoreLocation();
+        this.storeScore = postRequestDto.getStoreScore();
+        this.jmtMenuName = postRequestDto.getJmtMenuName();
+        this.jmtMenuImageUrl = postRequestDto.getJmtMenuImageUrl();
     }
 }

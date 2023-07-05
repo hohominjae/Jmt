@@ -1,24 +1,32 @@
 package com.sparta.Jmt.dto;
 
 import com.sparta.Jmt.entity.Post;
-import com.sparta.Jmt.entity.PostCategory;
-import com.sparta.Jmt.entity.User;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.net.URL;
 import java.time.LocalDateTime;
 
 @Getter
+@NoArgsConstructor
 public class PostResponseDto {
-    private String userName;
+    private Long id;
+
+    @NotBlank(message = "글의 제목을 입력해주세요.")
     private String postTitle;
+
+    @NotBlank(message = "글의 내용을 입력해주세요.")
     private String postContent;
+
     private PostCategory postCategory;
-    private String jmtName;
-    private String jmtLocation;
-    private String jmtMenu;
-    private URL jmtImage;
-    private float jmtScore;
+
+    private String storeName;
+    private String storeLocation;
+    private float storeScore;
+
+    private String jmtMenuName;
+    private URL jmtMenuImageUrl;
+
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 
@@ -27,13 +35,12 @@ public class PostResponseDto {
         this.postTitle = post.getPostTitle();
         this.postContent = post.getPostContent();
         this.postCategory = post.getPostCategory();
-        this.jmtName = post.getJmtName();
-        this.jmtLocation = post.getJmtLocation();
-        this.jmtMenu = post.getJmtMenu();
-        this.jmtImage = post.getJmtImage();
-        this.jmtScore = post.getJmtScore();
+        this.storeName = post.getStoreName();
+        this.storeLocation = post.getStoreLocation();
+        this.storeScore = post.getStoreScore();
+        this.jmtMenuName = post.getJmtMenuName();
+        this.jmtMenuImageUrl = post.getJmtMenuImageUrl();
         this.createdAt = post.getCreatedAt();
         this.modifiedAt = post.getModifiedAt();
     }
-
 }

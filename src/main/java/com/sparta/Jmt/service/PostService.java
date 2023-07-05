@@ -4,15 +4,11 @@ import com.sparta.Jmt.dto.PostListResponseDto;
 import com.sparta.Jmt.dto.PostRequestDto;
 import com.sparta.Jmt.dto.PostResponseDto;
 import com.sparta.Jmt.entity.Post;
-import com.sparta.Jmt.entity.User;
 import com.sparta.Jmt.repository.PostRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.stream.Collectors;
-//병합해주세용
 
 @Service
 public class PostService {
@@ -23,10 +19,12 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public PostResponseDto createPost(PostRequestDto postRequestDto, User user) {
+    public PostResponseDto createPost(PostRequestDto postRequestDto, User user){
+
         // RequestDto -> Entity(게시글 생성)
         Post post = new Post(postRequestDto);
         post.setUser(user);
+
         // DB 저장
         postRepository.save(post);
         return new PostResponseDto(post);

@@ -5,6 +5,7 @@ public enum PostCategory {
     CHINESEFOOD,
     JAPANESEFOOD,
     WESTERNFOOD,
+    FRENCHFOOD,
     ITALIANFOOD,
     MEXICANFOOD,
     ETCFOOD
