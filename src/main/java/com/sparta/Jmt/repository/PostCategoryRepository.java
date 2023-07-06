@@ -9,9 +9,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PostRepository extends JpaRepository<Post, Long> {
+public interface PostCategoryRepository extends JpaRepository<Post, PostCategory> {
+    List<Post> findAllByOrderByModifiedAtDesc();
 
-       List<Post> findAllByOrderByModifiedAtDesc();
-
-       List<Post> findByPostCategory(PostCategory postCategory);
+//    List<Post> findByPostCategoryGreaterThanEqual();
 }

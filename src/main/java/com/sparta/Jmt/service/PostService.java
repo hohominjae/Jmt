@@ -1,15 +1,13 @@
 package com.sparta.Jmt.service;
 
+import com.sparta.Jmt.dto.PostCategoryListResponseDto;
 import com.sparta.Jmt.dto.PostListResponseDto;
 import com.sparta.Jmt.dto.PostRequestDto;
 import com.sparta.Jmt.dto.PostResponseDto;
 import com.sparta.Jmt.entity.Post;
-import com.sparta.Jmt.entity.User;
+import com.sparta.Jmt.entity.PostCategory;
 import com.sparta.Jmt.repository.PostRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class PostService {
@@ -34,6 +32,13 @@ public class PostService {
         PostListResponseDto postListResponseDto = new PostListResponseDto(postRepository.findAllByOrderByModifiedAtDesc().stream().map(PostResponseDto::new).toList());
 
         return postListResponseDto;
+    }
+
+    //카테고리 조회
+    public PostCategoryListResponseDto getPostByCategory(PostCategory postCategory){
+        PostCategoryListResponseDto postCategoryListResponseDto = new PostCategoryListResponseDto(postRepository.findByPostCategory(postCategory).stream().map(PostResponseDto::new).toList());
+
+        return postCategoryListResponseDto;
     }
 
     //선택한 게시물 보기
@@ -66,6 +71,4 @@ public class PostService {
         return postRepository.findById(postId).orElseThrow(() ->
                 new IllegalArgumentException("선택한 게시글이 존재하지 않습니다."));
     }
-
-
 }

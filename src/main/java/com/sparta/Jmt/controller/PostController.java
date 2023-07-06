@@ -1,12 +1,12 @@
 package com.sparta.Jmt.controller;
 
+import com.sparta.Jmt.dto.PostCategoryListResponseDto;
 import com.sparta.Jmt.dto.PostListResponseDto;
 import com.sparta.Jmt.dto.PostRequestDto;
 import com.sparta.Jmt.dto.PostResponseDto;
-import com.sparta.Jmt.security.UserDetailsImpl;
+import com.sparta.Jmt.entity.PostCategory;
 import com.sparta.Jmt.service.PostService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -32,6 +32,13 @@ public class PostController {
 
         return postService.getPosts();
     }
+
+    @GetMapping("/category")
+    public PostCategoryListResponseDto getPostByCategory(@RequestParam PostCategory postCategory){
+
+        return postService.getPostByCategory(postCategory);
+    }
+
 
     @GetMapping("/post/{postId}")
     public PostResponseDto getPost(Long postId){
