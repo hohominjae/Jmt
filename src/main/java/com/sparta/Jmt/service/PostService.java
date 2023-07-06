@@ -54,7 +54,7 @@ public class PostService {
 
     //선택한 게시물 보기
     public PostResponseDto getPostById(Long postId) {
-        //Post형태로 postId에 맞는 게시글 찾기
+        //Post 형태로 postId에 맞는 게시글 찾기
         Post post = findPost(postId);
 
         //Post 형태의 찾은 게시물을 ResponseDto로 받아오기
