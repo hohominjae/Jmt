@@ -1,6 +1,7 @@
 package com.sparta.Jmt.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,20 +26,21 @@ public class User {
     @Column(nullable = false)
     private String userPassword;
 
-    @Column(nullable = false)
-    private String userNick;
-
     @Column
     private String profileComment;
 
     @Column
     private URL profileImage;
 
-    public User(String userName, String userPassword, String userNick, String profileComment, URL profileImage) {
+    @Column
+    @Email
+    private String userEmail;
+
+    public User(String userName, String userPassword, String profileComment, URL profileImage, String userEmail) {
         this.userName = userName;
         this.userPassword = userPassword;
-        this.userNick = userNick;
         this.profileComment = profileComment;
         this.profileImage = profileImage;
+        this.userEmail = userEmail;
     }
 }
