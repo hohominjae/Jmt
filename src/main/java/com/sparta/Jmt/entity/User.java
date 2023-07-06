@@ -20,17 +20,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String userName;
-
-    @Column(nullable = false)
-    private String userPassword;
-
     @Column
     private String profileComment;
 
     @Column
     private URL profileImageUrl;
+
+
+    @Column(nullable = false, unique = true)
+    private String userName;
+
+    @Column(nullable = false)
+    private String userPassword;
 
     @Column(nullable = false)
     @Email

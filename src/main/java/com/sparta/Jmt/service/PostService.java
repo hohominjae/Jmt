@@ -86,6 +86,10 @@ public class PostService {
         postRepository.delete(post);
     }
 
+    public List<Post> findAll() {
+        return postRepository.findAll();
+    }
+
     private Post findPost(Long postId) {
         return postRepository.findById(postId).orElseThrow(() ->
                 new IllegalArgumentException("선택한 게시글이 존재하지 않습니다."));
