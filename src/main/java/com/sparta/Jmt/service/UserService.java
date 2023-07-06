@@ -3,12 +3,9 @@ package com.sparta.Jmt.service;
 import com.sparta.Jmt.dto.UserRequestDto;
 import com.sparta.Jmt.entity.User;
 import com.sparta.Jmt.repository.UserRepository;
-import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.thymeleaf.spring6.SpringTemplateEngine;
 
 import java.net.URL;
 import java.util.Optional;
@@ -17,12 +14,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserService {
 
-    private final JavaMailSender javaMailSender;
-    private static final String senderEmail= "reason9550@gmail.com";
-    private static int number;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final SpringTemplateEngine springTemplateEngine;
 
     public void signup(UserRequestDto requestDto) {
         String userName = requestDto.getUserName();
@@ -45,36 +38,5 @@ public class UserService {
         // 사용자 등록
         User user = new User(userName, password, profileComment, profileImage, userEmail);
         userRepository.save(user);
-    }
-
-    public static void createNumber(){
-        number = (int)(Math.random() * (90000)) + 100000;// (int) Math.random() * (최댓값-최소값+1) + 최소값
-    }
-
-    public MimeMessage CreateMail(String mail){
-        createNumber();
-        MimeMessage message = javaMailSender.createMimeMessage();
-
-        try {
-            message.setFrom(senderEmail);
-            message.setRecipients(MimeMessage.RecipientType.TO, mail);
-            message.setSubject("이메일 인증");
-            String body = "";
-            body += "<h3>" + "요청하신 인증 번호입니다." + "</h3>";
-            body += "<h1>" + number + "</h1>";
-            body += "<h3>" + "감사합니다." + "</h3>";
-            message.setText(body,"UTF-8", "html");
-        } catch (jakarta.mail.MessagingException e) {
-            e.printStackTrace();
-        }
-
-        return message;
-    }
-
-    public int sendMail(String mail){
-        MimeMessage message = CreateMail(mail);
-        javaMailSender.send(message);
-
-        return number;
     }
 }

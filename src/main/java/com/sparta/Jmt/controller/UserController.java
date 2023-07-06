@@ -23,16 +23,4 @@ public class UserController {
         userService.signup(requestDto);
         return ResponseEntity.status(201).body(new MsgResponseDto("회원가입 성공", HttpStatus.CREATED.value()));
     }
-
-    @PostMapping("/sign-up/confirm")
-    public String MailSend(@RequestBody UserRequestDto requestDto){
-
-        int number = userService.sendMail(requestDto.getUserEmail());
-
-        String num = "" + number;
-
-        return num;
-    }
-
-
 }

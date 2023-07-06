@@ -1,6 +1,5 @@
 package com.sparta.Jmt.dto;
 
-import com.sparta.Jmt.entity.Post;
 import com.sparta.Jmt.entity.PostCategory;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
