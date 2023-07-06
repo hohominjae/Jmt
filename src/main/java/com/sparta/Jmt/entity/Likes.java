@@ -1,10 +1,8 @@
 package com.sparta.Jmt.entity;
 
+import com.sparta.Jmt.dto.LikesRequestDto;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import static jakarta.persistence.FetchType.LAZY;
 
@@ -18,9 +16,6 @@ public class Likes {
     @Column(name = "likes_id")
     private Long id;
 
-    @Column
-    private Long likes;
-
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "user_id")
     private User user;
@@ -29,16 +24,8 @@ public class Likes {
     @JoinColumn(name = "post_id")
     private Post post;
 
-    @Builder
     public Likes(User user, Post post) {
         this.user = user;
         this.post = post;
-    }
-
-    public void plusLikesCount() {
-        this.likes++;
-    }
-    public void minusLikesCount() {
-        this.likes--;
     }
 }

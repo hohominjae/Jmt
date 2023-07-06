@@ -40,7 +40,6 @@ public class PostResponseDto {
         this.postTitle = post.getPostTitle();
         this.postContent = post.getPostContent();
         this.postCategory = post.getPostCategory();
-        this.postLikes = post.getPostLikes();
         this.storeName = post.getStoreName();
         this.storeLocation = post.getStoreLocation();
         this.storeScore = post.getStoreScore();

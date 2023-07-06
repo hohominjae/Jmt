@@ -16,6 +16,7 @@ public class PostRequestDto {
     private String postTitle;
     private String postContent;
     private PostCategory postCategory;
+    private int postLikes;
     private String storeName;
     private String storeLocation;
     private float storeScore;

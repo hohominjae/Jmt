@@ -20,7 +20,7 @@ public class LikesController {
     }
 
     @PostMapping
-    public ResponseEntity<MsgResponseDto> insert(LikesRequestDto likesRequestDto) throws Exception {
+    public ResponseEntity<MsgResponseDto> insert(@RequestBody LikesRequestDto likesRequestDto) throws Exception {
         likesService.insert(likesRequestDto);
         return ResponseEntity.ok().body(new MsgResponseDto("좋아요 누르기 성공", HttpStatus.OK.value()));
     }

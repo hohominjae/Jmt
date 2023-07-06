@@ -1,10 +1,8 @@
 package com.sparta.Jmt.entity;
 
+import com.sparta.Jmt.dto.UserRequestDto;
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.net.URL;
 
@@ -29,12 +27,13 @@ public class User {
     private String profileComment;
 
     @Column
-    private URL profileImage;
+    private URL profileImageUrl;
 
-    public User(String userName, String userPassword, String profileComment, URL profileImage) {
+
+    public User(String userName, String password, String profileComment, URL profileImageUrl) {
         this.userName = userName;
-        this.userPassword = userPassword;
+        this.userPassword = password;
         this.profileComment = profileComment;
-        this.profileImage = profileImage;
+        this.profileImageUrl = profileImageUrl;
     }
 }

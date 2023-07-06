@@ -31,7 +31,7 @@ public class Post extends TimeStamped {
     @Enumerated(EnumType.STRING)
     private PostCategory postCategory;
 
-    @Column(name = "countLikes", nullable = false)
+    @Column(name = "postLikes", nullable = false)
     @ColumnDefault("0")
     private int postLikes;
 
@@ -47,7 +47,7 @@ public class Post extends TimeStamped {
     @Column(nullable = false)
     private String jmtMenuName;
 
-    @Column(nullable = false)
+    @Column
     private String jmtMenuImageUrl;
 
 
@@ -66,7 +66,6 @@ public class Post extends TimeStamped {
         this.jmtMenuImageUrl = postRequestDto.getJmtMenuImageUrl();
     }
 
-
     public void update(PostRequestDto requestDto) {
         this.postTitle = requestDto.getPostTitle();
         this.postContent = requestDto.getPostContent();
@@ -76,5 +75,12 @@ public class Post extends TimeStamped {
         this.storeScore = requestDto.getStoreScore();
         this.jmtMenuName = requestDto.getJmtMenuName();
         this.jmtMenuImageUrl = requestDto.getJmtMenuImageUrl();
+    }
+
+    public void plusLikes() {
+        this.postLikes++;
+    }
+    public void minusLikes() {
+        this.postLikes--;
     }
 }

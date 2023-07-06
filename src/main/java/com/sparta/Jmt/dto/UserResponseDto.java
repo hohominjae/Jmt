@@ -1,5 +1,6 @@
 package com.sparta.Jmt.dto;
 
+import com.sparta.Jmt.entity.User;
 import lombok.Getter;
 
 import java.net.URL;
@@ -9,12 +10,12 @@ public class UserResponseDto {
     private String userName;
     private String userPassword;
     private String profileComment;
-    private URL profileImage;
+    private URL profileImageUrl;
 
-    public UserResponseDto(String userName, String userPassword, String profileComment, URL profileImage) {
-        this.userName = userName;
-        this.userPassword = userPassword;
-        this.profileComment = profileComment;
-        this.profileImage = profileImage;
+    public UserResponseDto(User user) {
+        this.userName = user.getUserName();
+        this.userPassword = user.getUserPassword();
+        this.profileComment = user.getProfileComment();
+        this.profileImageUrl = user.getProfileImageUrl();
     }
 }

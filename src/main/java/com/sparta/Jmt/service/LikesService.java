@@ -4,7 +4,6 @@ import com.sparta.Jmt.dto.LikesRequestDto;
 import com.sparta.Jmt.entity.Likes;
 import com.sparta.Jmt.entity.Post;
 import com.sparta.Jmt.entity.User;
-import com.sparta.Jmt.repository.CountLikesRepository;
 import com.sparta.Jmt.repository.LikesRepository;
 import com.sparta.Jmt.repository.PostRepository;
 import com.sparta.Jmt.repository.UserRepository;
@@ -20,6 +19,13 @@ public class LikesService {
     private final UserRepository userRepository;
     private final PostRepository postRepository;
 
+    public void plusLikesCount(Post post) {
+        post.plusLikes();
+    }
+    public void minusLikesCount(Post post) {
+        post.minusLikes();
+    }
+
     @Transactional
     public void insert(LikesRequestDto likesRequestDto) throws Exception {
         User user = userRepository.findById(likesRequestDto.getUserId())
@@ -33,13 +39,10 @@ public class LikesService {
             throw new Exception();
         }
 
-        Likes likes = Likes.builder()
-                .post(post)
-                .user(user)
-                .build();
+        Likes likes = new Likes(user, post);
 
+        plusLikesCount(post);
         likesRepository.save(likes);
-        likes.plusLikesCount();
     }
 
     @Transactional
@@ -51,7 +54,10 @@ public class LikesService {
         Likes likes = likesRepository.findByUserAndPost(user, post)
                 .orElseThrow(() -> new ChangeSetPersister.NotFoundException());
 
+        minusLikesCount(post);
         likesRepository.delete(likes);
-        likes.minusLikesCount();
     }
+
+
+
 }
