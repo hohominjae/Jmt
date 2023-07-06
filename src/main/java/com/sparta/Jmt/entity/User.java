@@ -1,5 +1,6 @@
 package com.sparta.Jmt.entity;
 
+import com.sparta.Jmt.dto.UserRequestDto;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -25,7 +26,7 @@ public class User {
     @Column(nullable = false)
     private String userPassword;
 
-    @Column(nullable = false)
+    @Column
     private String userNick;
 
     @Column
