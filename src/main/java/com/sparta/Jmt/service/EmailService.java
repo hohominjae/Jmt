@@ -17,13 +17,13 @@ public class EmailService {
         number = (int)(Math.random() * (90000)) + 100000;// (int) Math.random() * (최댓값-최소값+1) + 최소값
     }
 
-    public MimeMessage CreateMail(String mail){
+    public MimeMessage CreateMail(String userEmail){
         createNumber();
         MimeMessage message = javaMailSender.createMimeMessage();
 
         try {
             message.setFrom(senderEmail);
-            message.setRecipients(MimeMessage.RecipientType.TO, mail);
+            message.setRecipients(MimeMessage.RecipientType.TO, userEmail);
             message.setSubject("이메일 인증");
             String body = "";
             body += "<h3>" + "요청하신 인증 번호입니다." + "</h3>";
@@ -37,10 +37,17 @@ public class EmailService {
         return message;
     }
 
-    public int sendMail(String mail){
-        MimeMessage message = CreateMail(mail);
+    public int sendMail(String userEmail){
+        MimeMessage message = CreateMail(userEmail);
         javaMailSender.send(message);
 
         return number;
+    }
+
+    public Boolean checkAuthNum(String userEmail, String authNum) {
+        String num = "" + number;
+        if(num.equals(authNum)) {
+            return true;
+        } throw new IllegalArgumentException("인증번호가 틀렸습니다.");
     }
 }

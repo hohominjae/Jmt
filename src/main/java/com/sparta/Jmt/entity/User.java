@@ -32,7 +32,7 @@ public class User {
     @Column
     private URL profileImage;
 
-    @Column
+    @Column(nullable = false)
     @Email
     private String userEmail;
 

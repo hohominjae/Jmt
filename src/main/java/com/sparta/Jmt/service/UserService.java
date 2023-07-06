@@ -18,6 +18,7 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     public void signup(UserRequestDto requestDto) {
+
         String userName = requestDto.getUserName();
         String password = passwordEncoder.encode(requestDto.getUserPassword());
         String profileComment = requestDto.getProfileComment();
@@ -30,6 +31,7 @@ public class UserService {
             throw new IllegalArgumentException("중복된 사용자가 존재합니다.");
         }
 
+        // 이메일 중복 확인
         Optional<User> checkUserEmail = userRepository.findByUserEmail(userEmail);
         if (checkUserEmail.isPresent()) {
             throw new IllegalArgumentException("중복된 이메일이 존재합니다");
