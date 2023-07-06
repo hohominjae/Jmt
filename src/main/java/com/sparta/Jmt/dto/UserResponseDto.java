@@ -1,5 +1,6 @@
 package com.sparta.Jmt.dto;
 
+import com.sparta.Jmt.entity.User;
 import lombok.Getter;
 
 import java.net.URL;
