@@ -2,6 +2,7 @@ package com.sparta.Jmt.service;
 
 import com.sparta.Jmt.dto.*;
 import com.sparta.Jmt.entity.Post;
+import com.sparta.Jmt.entity.PostCategory;
 import com.sparta.Jmt.entity.User;
 import com.sparta.Jmt.repository.PostRepository;
 import org.springframework.stereotype.Service;
@@ -89,5 +90,4 @@ public class PostService {
         return postRepository.findById(postId).orElseThrow(() ->
                 new IllegalArgumentException("선택한 게시글이 존재하지 않습니다."));
     }
-
 }

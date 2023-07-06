@@ -54,11 +54,6 @@ public class PostController {
         return postService.getPostByTitle(postTitle);
     }
 
-
-    @GetMapping("/post/{postId}")
-    public PostResponseDto getPost(Long postId){
-
-        return postService.getPost(postId);
     @GetMapping("/post/{postId}")//글 단건 조회
     public ResponseEntity<PostResponseDto> getPostById(@PathVariable Long postId) {
         PostResponseDto result = postService.getPostById(postId);
