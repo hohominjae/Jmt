@@ -6,6 +6,7 @@ import com.sparta.Jmt.dto.PostRequestDto;
 import com.sparta.Jmt.dto.PostResponseDto;
 import com.sparta.Jmt.entity.PostCategory;
 import com.sparta.Jmt.service.PostService;
+import lombok.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,7 +36,7 @@ public class PostController {
 
     //카테고리 선택 조회
     @GetMapping("/category")
-    public PostCategoryListResponseDto getPostByCategory(@RequestParam(name = "postCategory") PostCategory postCategory) {
+    public PostCategoryListResponseDto getPostByCategory(@RequestParam PostCategory postCategory) {
 
         return postService.getPostByCategory(postCategory);
     }
