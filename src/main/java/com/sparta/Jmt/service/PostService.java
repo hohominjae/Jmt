@@ -1,8 +1,6 @@
 package com.sparta.Jmt.service;
 
-import com.sparta.Jmt.dto.PostListResponseDto;
-import com.sparta.Jmt.dto.PostRequestDto;
-import com.sparta.Jmt.dto.PostResponseDto;
+import com.sparta.Jmt.dto.*;
 import com.sparta.Jmt.entity.Post;
 import com.sparta.Jmt.entity.User;
 import com.sparta.Jmt.repository.PostRepository;
@@ -37,6 +35,20 @@ public class PostService {
         List<PostResponseDto> postList = postRepository.findAllByOrderByModifiedAtDesc()
                 .stream().map(PostResponseDto::new).collect(Collectors.toList());
         return new PostListResponseDto(postList);
+    }
+
+    //카테고리 조회
+    public PostCategoryListResponseDto getPostByCategory(PostCategory postCategory){
+        PostCategoryListResponseDto postCategoryListResponseDto = new PostCategoryListResponseDto(postRepository.findByPostCategory(postCategory).stream().map(PostResponseDto::new).toList());
+
+        return postCategoryListResponseDto;
+    }
+
+    //제목으로 조회
+    public PostTitleListResponseDto getPostByTitle(String postTitle){
+        PostTitleListResponseDto postTitleListResponseDto = new PostTitleListResponseDto(postRepository.findByPostTitle(postTitle).stream().map(PostResponseDto::new).toList());
+
+        return postTitleListResponseDto;
     }
 
     //선택한 게시물 보기

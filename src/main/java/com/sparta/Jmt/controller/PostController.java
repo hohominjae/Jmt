@@ -5,6 +5,8 @@ import com.sparta.Jmt.dto.PostListResponseDto;
 import com.sparta.Jmt.dto.PostRequestDto;
 import com.sparta.Jmt.dto.PostResponseDto;
 import com.sparta.Jmt.security.UserDetailsImpl;
+import com.sparta.Jmt.dto.*;
+import com.sparta.Jmt.entity.PostCategory;
 import com.sparta.Jmt.service.PostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +40,25 @@ public class PostController {
         return ResponseEntity.ok().body(result);
     }
 
+    //카테고리 선택 조회
+    @GetMapping("/category")
+    public PostCategoryListResponseDto getPostByCategory(@RequestParam PostCategory postCategory) {
+
+        return postService.getPostByCategory(postCategory);
+    }
+
+    //제목으로 조회
+    @GetMapping("/postTitle")
+    public PostTitleListResponseDto getPostByTitle(@RequestParam String postTitle){
+
+        return postService.getPostByTitle(postTitle);
+    }
+
+
+    @GetMapping("/post/{postId}")
+    public PostResponseDto getPost(Long postId){
+
+        return postService.getPost(postId);
     @GetMapping("/post/{postId}")//글 단건 조회
     public ResponseEntity<PostResponseDto> getPostById(@PathVariable Long postId) {
         PostResponseDto result = postService.getPostById(postId);
