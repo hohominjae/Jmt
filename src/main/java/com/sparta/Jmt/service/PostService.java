@@ -23,7 +23,7 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public PostResponseDto createPost(PostRequestDto postRequestDto, User user){
+    public void createPost(PostRequestDto postRequestDto, User user){
 
         // RequestDto -> Entity(게시글 생성)
         Post post = new Post(postRequestDto);
@@ -31,7 +31,6 @@ public class PostService {
 
         // DB 저장
         postRepository.save(post);
-        return new PostResponseDto(post);
     }
 
     //전체 게시물 보기
