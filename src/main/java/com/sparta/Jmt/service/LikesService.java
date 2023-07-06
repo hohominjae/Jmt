@@ -34,7 +34,7 @@ public class LikesService {
         Post post = postRepository.findById(likesRequestDto.getPostId())
                 .orElseThrow(() -> new ChangeSetPersister.NotFoundException());
 
-        //같은 유저가 같은 게시글에 좋아요를 중복해서 누르지 못하게 하기
+        //같은 유저가 같은 게시글에 좋아요를 중복해서 누르지 못하게 하기 -> 안 먹고있음
         if (likesRepository.findByUserAndPost(user, post).isPresent()){
             throw new Exception();
         }
