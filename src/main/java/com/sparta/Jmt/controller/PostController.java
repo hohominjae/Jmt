@@ -1,9 +1,7 @@
 package com.sparta.Jmt.controller;
 
-import com.sparta.Jmt.dto.PostCategoryListResponseDto;
-import com.sparta.Jmt.dto.PostListResponseDto;
-import com.sparta.Jmt.dto.PostRequestDto;
-import com.sparta.Jmt.dto.PostResponseDto;
+import com.sparta.Jmt.dto.*;
+import com.sparta.Jmt.entity.Post;
 import com.sparta.Jmt.entity.PostCategory;
 import com.sparta.Jmt.service.PostService;
 import lombok.Value;
@@ -39,6 +37,13 @@ public class PostController {
     public PostCategoryListResponseDto getPostByCategory(@RequestParam PostCategory postCategory) {
 
         return postService.getPostByCategory(postCategory);
+    }
+
+    //제목으로 조회
+    @GetMapping("/postTitle")
+    public PostTitleListResponseDto getPostByTitle(@RequestParam String postTitle){
+
+        return postService.getPostByTitle(postTitle);
     }
 
 
