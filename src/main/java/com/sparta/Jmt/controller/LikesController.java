@@ -20,13 +20,13 @@ public class LikesController {
     }
 
     @PostMapping
-    public ResponseEntity<MsgResponseDto> insert(@Valid LikesRequestDto likesRequestDto) throws Exception {
+    public ResponseEntity<MsgResponseDto> insert(LikesRequestDto likesRequestDto) throws Exception {
         likesService.insert(likesRequestDto);
         return ResponseEntity.ok().body(new MsgResponseDto("좋아요 누르기 성공", HttpStatus.OK.value()));
     }
 
     @DeleteMapping
-    public ResponseEntity<MsgResponseDto> delete(@Valid LikesRequestDto likesRequestDto) throws Exception {
+    public ResponseEntity<MsgResponseDto> delete(LikesRequestDto likesRequestDto) throws Exception {
         likesService.delete(likesRequestDto);
         return ResponseEntity.ok().body(new MsgResponseDto("좋아요 취소 성공", HttpStatus.OK.value()));
     }

@@ -10,7 +10,6 @@ import java.net.URL;
 public class UserRequestDto {
     private String userName;
     private String userPassword;
-    private String userNick;
     private String profileComment;
     private URL profileImage;
 }

@@ -23,7 +23,6 @@ public class UserService {
     public void signup(UserRequestDto requestDto) {
         String userName = requestDto.getUserName();
         String password = passwordEncoder.encode(requestDto.getUserPassword());
-        String userNick = requestDto.getUserName();
         String profileComment = requestDto.getProfileComment();
         URL profileImage = requestDto.getProfileImage();
 
@@ -34,7 +33,7 @@ public class UserService {
         }
 
         // 사용자 등록
-        User user = new User(userName, password, userNick, profileComment, profileImage);
+        User user = new User(userName, password, profileComment, profileImage);
         userRepository.save(user);
     }
 

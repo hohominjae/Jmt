@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 public class MsgResponseDto {
     private String message;
     private Integer statusCode;
-    private boolean isComplete;
 
     public MsgResponseDto(String message, Integer statusCode) {
         this.message = message;

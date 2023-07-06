@@ -48,7 +48,7 @@ public class Post extends TimeStamped {
     private String jmtMenuName;
 
     @Column(nullable = false)
-    private URL jmtMenuImageUrl;
+    private String jmtMenuImageUrl;
 
 
     @JoinColumn
@@ -59,7 +59,6 @@ public class Post extends TimeStamped {
         this.postTitle = postRequestDto.getPostTitle();
         this.postContent = postRequestDto.getPostContent();
         this.postCategory = postRequestDto.getPostCategory();
-        this.postLikes = postRequestDto.getPostLikes();
         this.storeName = postRequestDto.getStoreName();
         this.storeLocation = postRequestDto.getStoreLocation();
         this.storeScore = postRequestDto.getStoreScore();
@@ -72,7 +71,6 @@ public class Post extends TimeStamped {
         this.postTitle = requestDto.getPostTitle();
         this.postContent = requestDto.getPostContent();
         this.postCategory = requestDto.getPostCategory();
-        this.postLikes = requestDto.getPostLikes();
         this.storeName = requestDto.getStoreName();
         this.storeLocation = requestDto.getStoreLocation();
         this.storeScore = requestDto.getStoreScore();

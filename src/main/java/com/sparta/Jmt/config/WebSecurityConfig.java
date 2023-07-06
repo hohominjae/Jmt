@@ -64,6 +64,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/api/jmt/sign-up").permitAll()
                         .requestMatchers("/api/jmt/post/**").permitAll()
                         .requestMatchers("/").permitAll()
+                        .requestMatchers("/**").permitAll()
                         .anyRequest().authenticated() // 그 외 모든 요청 인증처리
         );
 

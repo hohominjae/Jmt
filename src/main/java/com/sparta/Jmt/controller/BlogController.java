@@ -40,4 +40,10 @@ public class BlogController {
 
         return "writePost";
     }
+
+    @GetMapping("/login")
+    public String loginPage(User user, Model model) {
+
+        return "login";
+    }
 }

@@ -30,7 +30,7 @@ public class PostResponseDto {
     private float storeScore;
 
     private String jmtMenuName;
-    private URL jmtMenuImageUrl;
+    private String jmtMenuImageUrl;
 
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
