@@ -1,5 +1,6 @@
 package com.sparta.Jmt.dto;
 
+import com.sparta.Jmt.entity.Comment;
 import com.sparta.Jmt.entity.Post;
 import com.sparta.Jmt.entity.PostCategory;
 import jakarta.validation.constraints.NotBlank;
@@ -9,12 +10,14 @@ import lombok.Setter;
 
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 public class PostResponseDto {
-    private String userName;
+    private String userNick;
 
     @NotBlank(message = "글의 제목을 입력해주세요.")
     private String postTitle;
@@ -34,9 +37,10 @@ public class PostResponseDto {
 
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
+    private List<CommentResponseDto> comments;
 
     public PostResponseDto(Post post) {
-        this.userName = post.getUser().getUserName();
+        this.userNick = post.getUser().getUserNick();
         this.postTitle = post.getPostTitle();
         this.postContent = post.getPostContent();
         this.postCategory = post.getPostCategory();
@@ -47,5 +51,11 @@ public class PostResponseDto {
         this.jmtMenuImageUrl = post.getJmtMenuImageUrl();
         this.createdAt = post.getCreatedAt();
         this.modifiedAt = post.getModifiedAt();
+        List<CommentResponseDto> commentList = new ArrayList<>();
+        for (Comment comment : post.getComments()) {
+            CommentResponseDto commentResponseDto = new CommentResponseDto(comment);
+            commentList.add(commentResponseDto);
+        }
+        this.comments = commentList;
     }
 }

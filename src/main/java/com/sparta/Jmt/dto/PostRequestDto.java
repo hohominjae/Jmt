@@ -3,15 +3,11 @@ package com.sparta.Jmt.dto;
 import com.sparta.Jmt.entity.PostCategory;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.net.URL;
 
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class PostRequestDto {
     private String postTitle;
     private String postContent;
