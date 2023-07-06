@@ -33,8 +33,9 @@ public class PostController {
         return postService.getPosts();
     }
 
+    //카테고리 선택 조회
     @GetMapping("/category")
-    public PostCategoryListResponseDto getPostByCategory(@RequestParam PostCategory postCategory){
+    public PostCategoryListResponseDto getPostByCategory(@RequestParam(name = "postCategory") PostCategory postCategory) {
 
         return postService.getPostByCategory(postCategory);
     }
@@ -55,5 +56,4 @@ public class PostController {
     public void deletePost(Long postId){
         postService.deletePost(postId);
     }
-
 }

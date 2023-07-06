@@ -19,29 +19,29 @@ public class Post extends TimeStamped {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
 
-    @Column(nullable = false)
+    @Column
     private String postTitle;
 
-    @Column(nullable = false)
+    @Column
     private String postContent;
 
-    @Column(nullable = false)
+    @Column
     @Enumerated(EnumType.STRING)
     private PostCategory postCategory;
 
-    @Column(nullable = false)
+    @Column
     private String jmtName;
 
-    @Column(nullable = false)
+    @Column
     private String jmtLocation;
 
-    @Column(nullable = false)
+    @Column
     private String jmtMenu;
 
     @Column
     private URL jmtImage;
 
-    @Column(nullable = false)
+    @Column
     private float jmtScore;
 
     public Post(PostRequestDto postRequestDto) {
