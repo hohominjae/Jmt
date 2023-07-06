@@ -1,10 +1,8 @@
 package com.sparta.Jmt.controller;
 
 import com.sparta.Jmt.dto.*;
-import com.sparta.Jmt.entity.Post;
 import com.sparta.Jmt.entity.PostCategory;
 import com.sparta.Jmt.service.PostService;
-import lombok.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

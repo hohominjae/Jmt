@@ -44,6 +44,11 @@ public class Post extends TimeStamped {
     @Column
     private float jmtScore;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
     public Post(PostRequestDto postRequestDto) {
         this.postTitle = postRequestDto.getPostTitle();
         this.postContent = postRequestDto.getPostContent();
