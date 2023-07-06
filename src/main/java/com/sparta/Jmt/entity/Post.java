@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -44,9 +46,13 @@ public class Post extends TimeStamped {
     @Column(nullable = false)
     private URL jmtMenuImageUrl;
 
-    @JoinColumn
+//    @JoinColumn
     @ManyToOne
     private User user;
+
+    @OneToMany(mappedBy = "post")
+//    @OrderBy("id asc") // 댓글 정렬
+    private List<Comment> comments;
 
 
     public Post(PostRequestDto requestDto) {
