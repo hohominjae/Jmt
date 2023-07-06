@@ -1,8 +1,9 @@
 package com.sparta.Jmt.entity;
 
-import com.sparta.Jmt.dto.LikesRequestDto;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import static jakarta.persistence.FetchType.LAZY;
 

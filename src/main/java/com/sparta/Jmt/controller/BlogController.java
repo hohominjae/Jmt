@@ -1,6 +1,5 @@
 package com.sparta.Jmt.controller;
 
-import com.sparta.Jmt.dto.PostResponseDto;
 import com.sparta.Jmt.entity.Post;
 import com.sparta.Jmt.entity.PostCategory;
 import com.sparta.Jmt.entity.User;
@@ -9,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.stream.Collectors;
 
 @Controller
 public class BlogController {
@@ -34,6 +31,7 @@ public class BlogController {
 
         return "index";
     }
+
     @GetMapping("/writePost")
     public String postPage(Post post, Model model) {
 

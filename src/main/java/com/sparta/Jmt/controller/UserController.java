@@ -2,7 +2,6 @@ package com.sparta.Jmt.controller;
 
 import com.sparta.Jmt.dto.MsgResponseDto;
 import com.sparta.Jmt.dto.UserRequestDto;
-import com.sparta.Jmt.service.EmailService;
 import com.sparta.Jmt.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

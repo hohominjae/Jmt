@@ -2,9 +2,7 @@ package com.sparta.Jmt.service;
 
 import com.sparta.Jmt.dto.UserRequestDto;
 import com.sparta.Jmt.entity.User;
-import com.sparta.Jmt.jwt.JwtUtil;
 import com.sparta.Jmt.repository.UserRepository;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

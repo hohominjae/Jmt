@@ -6,7 +6,6 @@ import com.sparta.Jmt.dto.PostResponseDto;
 import com.sparta.Jmt.entity.Post;
 import com.sparta.Jmt.entity.User;
 import com.sparta.Jmt.repository.PostRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,7 +22,7 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public void createPost(PostRequestDto postRequestDto, User user){
+    public void createPost(PostRequestDto postRequestDto, User user) {
 
         // RequestDto -> Entity(게시글 생성)
         Post post = new Post(postRequestDto);

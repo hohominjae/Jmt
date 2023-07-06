@@ -1,13 +1,14 @@
 package com.sparta.Jmt.service;
 
-import com.sparta.Jmt.dto.*;
+import com.sparta.Jmt.dto.CommentListResponseDto;
+import com.sparta.Jmt.dto.CommentRequestDto;
+import com.sparta.Jmt.dto.CommentResponseDto;
 import com.sparta.Jmt.entity.Comment;
 import com.sparta.Jmt.entity.Post;
 import com.sparta.Jmt.entity.User;
 import com.sparta.Jmt.repository.CommentRepository;
 import com.sparta.Jmt.repository.PostRepository;
 import com.sparta.Jmt.security.UserDetailsImpl;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,14 +22,15 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final PostRepository postRepository;
 
-    public CommentService(CommentRepository commentRepository,PostRepository postRepository) {
+    public CommentService(CommentRepository commentRepository, PostRepository postRepository) {
         this.commentRepository = commentRepository;
         this.postRepository = postRepository;
     }
-    public void createComment(UserDetailsImpl userDetails, CommentRequestDto commentRequestDto) {
-        Post post = postRepository.findById(commentRequestDto.getPostId()).orElseThrow(()->new RuntimeException());
 
-        Comment comment = new Comment(userDetails.getUser(),post,commentRequestDto.getContent());
+    public void createComment(UserDetailsImpl userDetails, CommentRequestDto commentRequestDto) {
+        Post post = postRepository.findById(commentRequestDto.getPostId()).orElseThrow(() -> new RuntimeException());
+
+        Comment comment = new Comment(userDetails.getUser(), post, commentRequestDto.getContent());
 
         commentRepository.save(comment);
     }
@@ -58,7 +60,7 @@ public class CommentService {
         comment.update(commentRequestDto);
     }
 
-    public void delet(User user, Long commentId) {
+    public void delete(User user, Long commentId) {
         Comment comment = findComment(commentId);
 
         if (!comment.getUser().equals(user)) {

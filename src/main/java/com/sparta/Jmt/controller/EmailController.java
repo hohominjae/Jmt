@@ -23,7 +23,7 @@ public class EmailController {
     }
 
     @PostMapping("/sign-up/mail-send")
-    public String MailSend(@RequestBody EmailRequestDto requestDto){
+    public String MailSend(@RequestBody EmailRequestDto requestDto) {
 
         int number = emailService.sendMail(requestDto.getUserEmail());
 
@@ -34,9 +34,10 @@ public class EmailController {
 
     @PostMapping("/sign-up/mail-check")
     public ResponseEntity<MsgResponseDto> AuthCheck(@RequestBody @Valid EmailCheckDto emailCheckDto) {
-        Boolean checked = emailService.checkAuthNum(emailCheckDto.getUserEmail(), emailCheckDto.getAuthNum());
-        if(checked) {
+        Boolean checkedAuthNum = emailService.checkAuthNum(emailCheckDto.getUserEmail(), emailCheckDto.getAuthNum());
+        if (checkedAuthNum) {
             return ResponseEntity.ok().body(new MsgResponseDto("이메일 인증 성공", HttpStatus.OK.value()));
-        } throw new IllegalArgumentException("인증번호가 틀렸습니다");
+        }
+        throw new IllegalArgumentException("인증번호가 틀렸습니다");
     }
 }

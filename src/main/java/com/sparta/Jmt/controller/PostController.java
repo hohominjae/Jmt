@@ -20,7 +20,8 @@ public class PostController {
     //의존성 주입 받기위해 Service를 빈으로 등록 후 받아온다.
     //우리가 사용한 방법 생성자 주입
     private final PostService postService;
-    public PostController(PostService postService){
+
+    public PostController(PostService postService) {
         this.postService = postService;
     }
 

@@ -3,7 +3,6 @@ package com.sparta.Jmt.controller;
 import com.sparta.Jmt.dto.LikesRequestDto;
 import com.sparta.Jmt.dto.MsgResponseDto;
 import com.sparta.Jmt.service.LikesService;
-import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

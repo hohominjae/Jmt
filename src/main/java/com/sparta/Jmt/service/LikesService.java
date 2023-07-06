@@ -22,6 +22,7 @@ public class LikesService {
     public void plusLikesCount(Post post) {
         post.plusLikes();
     }
+
     public void minusLikesCount(Post post) {
         post.minusLikes();
     }
@@ -34,10 +35,10 @@ public class LikesService {
         Post post = postRepository.findById(likesRequestDto.getPostId())
                 .orElseThrow(() -> new ChangeSetPersister.NotFoundException());
 
-        //같은 유저가 같은 게시글에 좋아요를 중복해서 누르지 못하게 하기 -> 안 먹고있음
-        if (likesRepository.findByUserAndPost(user, post).isPresent()){
-            throw new Exception();
-        }
+//        //같은 유저가 같은 게시글에 좋아요를 중복해서 누르지 못하게 하기 -> 안 먹고있음
+//        if (likesRepository.findByUserAndPost(user, post).isPresent()){
+//            throw new Exception();
+//        }
 
         Likes likes = new Likes(user, post);
 
@@ -57,7 +58,6 @@ public class LikesService {
         minusLikesCount(post);
         likesRepository.delete(likes);
     }
-
 
 
 }

@@ -14,6 +14,4 @@ public class EmailCheckDto {
 
     @NotEmpty(message = "인증번호를 입력해 주세요")
     private String authNum;
-
-    private Boolean emailAuth;
 }

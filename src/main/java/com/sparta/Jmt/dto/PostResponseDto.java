@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class PostResponseDto {
-    private String userNick;
+    private String userName;
 
     @NotBlank(message = "글의 제목을 입력해주세요.")
     private String postTitle;
@@ -40,7 +39,7 @@ public class PostResponseDto {
     private List<CommentResponseDto> comments;
 
     public PostResponseDto(Post post) {
-        this.userNick = post.getUser().getUserNick();
+        this.userName = post.getUser().getUserName();
         this.postTitle = post.getPostTitle();
         this.postContent = post.getPostContent();
         this.postCategory = post.getPostCategory();

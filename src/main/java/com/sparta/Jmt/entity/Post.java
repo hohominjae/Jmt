@@ -5,8 +5,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
-import java.net.URL;
+import java.util.List;
 
 @Entity
 @Getter
@@ -83,6 +84,7 @@ public class Post extends TimeStamped {
     public void plusLikes() {
         this.postLikes++;
     }
+
     public void minusLikes() {
         this.postLikes--;
     }

@@ -15,7 +15,7 @@ import lombok.Setter;
 public class PostImage {
     @Id
     @GeneratedValue
-    @Column(name="imageId")
+    @Column(name = "imageId")
     private Long id;
 
     @Column(nullable = false)
