@@ -56,8 +56,7 @@ public class WebSecurityConfig {
                 sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         );
 
-        http
-                .authorizeHttpRequests((authorizeHttpRequests) ->
+        http.authorizeHttpRequests((authorizeHttpRequests) ->
                 authorizeHttpRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll() // resources 접근 허용 설정
                         .requestMatchers("/api/jmt/login").permitAll() // '/api/user/'로 시작하는 요청 모두 접근 허가
@@ -74,5 +73,4 @@ public class WebSecurityConfig {
 
         return http.build();
     }
-
 }
