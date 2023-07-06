@@ -4,7 +4,9 @@ import com.sparta.Jmt.dto.PostRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.net.URL;
 
@@ -29,6 +31,10 @@ public class Post extends TimeStamped {
     @Enumerated(EnumType.STRING)
     private PostCategory postCategory;
 
+    @Column(name = "countLikes", nullable = false)
+    @ColumnDefault("0")
+    private int postLikes;
+
     @Column(nullable = false)
     private String storeName;
 
@@ -44,26 +50,29 @@ public class Post extends TimeStamped {
     @Column(nullable = false)
     private URL jmtMenuImageUrl;
 
+
     @JoinColumn
     @ManyToOne
     private User user;
 
-
-    public Post(PostRequestDto requestDto) {
-        this.postTitle = requestDto.getPostTitle();
-        this.postContent = requestDto.getPostContent();
-        this.postCategory = requestDto.getPostCategory();
-        this.storeName = requestDto.getStoreName();
-        this.storeLocation = requestDto.getStoreLocation();
-        this.storeScore = requestDto.getStoreScore();
-        this.jmtMenuName = requestDto.getJmtMenuName();
-        this.jmtMenuImageUrl = requestDto.getJmtMenuImageUrl();
+    public Post(PostRequestDto postRequestDto) {
+        this.postTitle = postRequestDto.getPostTitle();
+        this.postContent = postRequestDto.getPostContent();
+        this.postCategory = postRequestDto.getPostCategory();
+        this.postLikes = postRequestDto.getPostLikes();
+        this.storeName = postRequestDto.getStoreName();
+        this.storeLocation = postRequestDto.getStoreLocation();
+        this.storeScore = postRequestDto.getStoreScore();
+        this.jmtMenuName = postRequestDto.getJmtMenuName();
+        this.jmtMenuImageUrl = postRequestDto.getJmtMenuImageUrl();
     }
+
 
     public void update(PostRequestDto requestDto) {
         this.postTitle = requestDto.getPostTitle();
         this.postContent = requestDto.getPostContent();
         this.postCategory = requestDto.getPostCategory();
+        this.postLikes = requestDto.getPostLikes();
         this.storeName = requestDto.getStoreName();
         this.storeLocation = requestDto.getStoreLocation();
         this.storeScore = requestDto.getStoreScore();

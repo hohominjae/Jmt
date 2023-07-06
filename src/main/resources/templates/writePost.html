@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>게시물 작성폼</title>
+</head>
+<style>
+  .layout {
+    width: 500px;
+    margin: 0 auto;
+  }
+
+  .layout input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .layout textarea {
+    width: 100%;
+    margin-top: 10px;
+    min-height: 300px;
+  }
+</style>
+<body>
+<div class="layout">
+
+  <!--게시글 작성-->
+    <form class="form-floating">
+      <input type="text" class="form-control" id="floatingInputValue1">
+      <label for="floatingInputValue1">게시글 제목</label>
+    </form>
+    <form class="form-floating">
+      <input type="text" class="form-control" id="floatingInputValue2">
+      <label for="floatingInputValue2">추천하는 맛집 이름</label>
+    </form>
+    <form>
+      <input type="text" class="form-control" id="floatingInputValue3">
+      <label for="floatingInputValue3">추천하는 맛집 위치</label>
+    </form>
+    <select class="form-select" aria-label="Default select example">
+      <option selected>추천하는 맛집의 카테고리를 골라주세요.</option>
+      <option value="KOREANFOOD">한식</option>
+      <option value="CHINESEFOOD">중식</option>
+      <option value="JAPANESEFOOD">일식</option>
+      <option value="WESTERNFOOD">양식</option>
+      <option value="FRENCHFOOD">프랑스식</option>
+      <option value="ITALIANFOOD">이탈리아식</option>
+      <option value="MEXICANFOOD">멕시코식</option>
+      <option value="ETCFOOD">기타</option>
+    </select>
+    <form class="form-floating">
+      <label for="floatingTextarea2">게시글 내용</label>
+      <textarea class="form-control" id="floatingTextarea2" style="height: 100px"></textarea>
+    </form>
+    <form class="form-floating">
+      <input type="text" class="form-control" id="floatingInputValue4">
+      <label for="floatingInputValue1">추천 메뉴 이름</label>
+    </form>
+    <div class="input-group">
+      <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+      <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">추천 메뉴 사진</button>
+    </div>
+</div>
+
+</body>
+</html>

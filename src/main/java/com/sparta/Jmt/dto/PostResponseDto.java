@@ -11,6 +11,7 @@ import java.net.URL;
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 @NoArgsConstructor
 public class PostResponseDto {
     private String userName;
@@ -22,6 +23,7 @@ public class PostResponseDto {
     private String postContent;
 
     private PostCategory postCategory;
+    private int postLikes;
 
     private String storeName;
     private String storeLocation;
@@ -38,6 +40,7 @@ public class PostResponseDto {
         this.postTitle = post.getPostTitle();
         this.postContent = post.getPostContent();
         this.postCategory = post.getPostCategory();
+        this.postLikes = post.getPostLikes();
         this.storeName = post.getStoreName();
         this.storeLocation = post.getStoreLocation();
         this.storeScore = post.getStoreScore();

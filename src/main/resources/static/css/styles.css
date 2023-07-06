@@ -2892,7 +2892,7 @@ img.u-pull-left {
 
 .bricks-wrapper {
     position   : relative;
-    margin-top : calc(var(--brick-padding) * -1);
+    margin-top : 5%;
 }
 
 .bricks-wrapper .grid-sizer,

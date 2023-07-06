@@ -1,6 +1,5 @@
 package com.sparta.Jmt.dto;
 
-import com.sparta.Jmt.entity.Post;
 import com.sparta.Jmt.entity.PostCategory;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,6 +14,7 @@ public class PostRequestDto {
     private String postTitle;
     private String postContent;
     private PostCategory postCategory;
+    private int postLikes;
     private String storeName;
     private String storeLocation;
     private float storeScore;
