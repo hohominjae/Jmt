@@ -54,7 +54,7 @@ public class Post extends TimeStamped {
     @ManyToOne
     private User user;
 
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post",orphanRemoval = true)
 //    @OrderBy("id asc") // 댓글 정렬
     private List<Comment> comments;
 
